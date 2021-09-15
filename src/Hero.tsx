@@ -1,8 +1,10 @@
-export  type Heroe =  {
+export  type Hero =  {
     attack: number,
     code : string,
-    defence: number,
+    defense: number,
     health: number,
+    willpower: number,
+    threat: number,
     url: string,
     text: string,
     name : string

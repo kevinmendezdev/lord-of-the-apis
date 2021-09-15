@@ -2,12 +2,12 @@ import React,{useEffect,useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Results from './Results';
-import {Heroe} from './Heroe';
+import {Hero} from './Hero';
 
 
 function SearchDeck() {
     const [isLoading,setIsLoading] = useState(false);
-    const [heroes, setHeroes] = useState<Heroe[]>([])
+    const [heroes, setHeroes] = useState<Hero[]>([])
     const [deckId,setDeckId] = useState(20);
     useEffect(()=>{
         requestDecks();
@@ -25,7 +25,7 @@ function SearchDeck() {
             console.log('heroes in da house');
   let heroes = Object.keys(json.heroes);
     let heroesObjects =    heroes.map((hero : string)=>fetchHeroe(hero));
-    Promise.all(heroesObjects).then((heroes : Heroe []) => {
+    Promise.all(heroesObjects).then((heroes : Hero []) => {
         setHeroes(heroes);
     })
         console.log('heroes');
@@ -39,7 +39,7 @@ function SearchDeck() {
         },3000);
        
       }
-      async function fetchHeroe(heroe : string) : Promise<Heroe>{
+      async function fetchHeroe(heroe : string) : Promise<Hero>{
           const res = await fetch( `https://ringsdb.com/api/public/card/${heroe}`);
           const json = await res.json();
           console.log(json);

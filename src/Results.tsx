@@ -1,11 +1,11 @@
 // import React,{useEffect,useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {Heroe} from './Heroe';
+import {Hero} from './Hero';
 import HeroeCard from './HeroCard';
 
 type ResultsProps = {
-    heroes: Heroe[],
+    heroes: Hero[],
  
 }
 
@@ -28,7 +28,7 @@ function Results({heroes}:ResultsProps) {
     {heroes.map((heroe)=> <HeroeCard hero = { heroe} /> )}
     </div>
     </div>
-    : <div></div>
+    : null
   );
 }
 
