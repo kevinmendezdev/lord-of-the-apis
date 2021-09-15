@@ -2,10 +2,7 @@
 import logo from './logo.svg';
 import './App.css';
 import {Heroe} from './Heroe';
-
-type HeroeProps = {
-    heroe : Heroe
-}
+import HeroeCard from './HeroCard';
 
 type ResultsProps = {
     heroes: Heroe[],
@@ -28,9 +25,8 @@ function Results({heroes}:ResultsProps) {
     <div className="heroes">
     <h3>Here are your heroes</h3>
     <div className="heroCards">
-    {heroes.map((heroe)=> <HeroeCard heroe = { heroe} /> )}
+    {heroes.map((heroe)=> <HeroeCard hero = { heroe} /> )}
     </div>
-    
     </div>
     : <div></div>
   );
@@ -39,11 +35,3 @@ function Results({heroes}:ResultsProps) {
 export default Results;
 
 
-function HeroeCard ({heroe} : HeroeProps){
-    return (<div >
-        <div className="heroCard" key={heroe.name}>
-            <img src={`https://ringsdb.com/${heroe.imagesrc}`} alt={heroe.name} />
-            
-             {heroe.name}</div>
-    </div>)
-}
