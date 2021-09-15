@@ -9,6 +9,8 @@ function SearchDeck() {
   const [isLoading, setIsLoading] = useState(false);
   const [heroes, setHeroes] = useState<Hero[]>([]);
   const [deckId, setDeckId] = useState(20);
+  const [loadingStatus, setloadingStatus] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     requestDecks();
@@ -21,25 +23,31 @@ function SearchDeck() {
     );
 
     const json = await res.json();
-    console.log(`json: ${json.success}`);
-    if (json['heroes'] !== undefined) {
-      console.log('heroes in da house');
-      let heroes = Object.keys(json.heroes);
-      let heroesObjects = heroes.map((hero: string) =>
-        fetchHeroe(hero),
-      );
-      Promise.all(heroesObjects).then((heroes: Hero[]) => {
-        setHeroes(heroes);
-      });
-      console.log('heroes');
-      console.log(heroes);
-      console.log(heroesObjects);
+    console.log(`json: ${loadingStatus}`);
+    if ('success' in json) {
+      setloadingStatus(false);
+      setError(json.error);
+    } else {
+      setloadingStatus(true);
+      if ('heroes' in json) {
+        console.log('heroes in da house');
+        let heroes = Object.keys(json.heroes);
+        let heroesObjects = heroes.map((hero: string) =>
+          fetchHeroe(hero),
+        );
+        Promise.all(heroesObjects).then((heroes: Hero[]) => {
+          setHeroes(heroes);
+        });
+        console.log('heroes');
+        console.log(heroes);
+        console.log(heroesObjects);
+      }
     }
 
     setTimeout(() => {
       console.log(json);
       setIsLoading(false);
-    }, 3000);
+    }, 1000);
   }
   async function fetchHeroe(heroe: string): Promise<Hero> {
     const res = await fetch(
@@ -73,7 +81,17 @@ function SearchDeck() {
           />
         </label>
       </form>
-      {isLoading ? <p>loading</p> : <Results heroes={heroes} />}
+      {isLoading ? (
+        <p>loading</p>
+      ) : loadingStatus ? (
+        <Results heroes={heroes} />
+      ) : (
+        <div>
+          <p>Oops!</p>
+          <p>{error}</p>
+          <p>Try again with other hero id!</p>
+        </div>
+      )}
     </div>
   );
 }

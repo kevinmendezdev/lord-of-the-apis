@@ -31,9 +31,6 @@
 
 .modal-container {
   position: relative;
-  margin: 0 auto;
-  top: 200px;
-  height: 60%;
   width: 85%;
   background: white;
   margin: 0 auto;
@@ -50,14 +47,24 @@
 
 .hero-container {
   display: flex;
+  padding: 0px 30px;
 }
 
 .hero-card-image {
-  background-size: cover;
-  height: 400px;
-  width: 300px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 276px;
+  width: 281px;
 }
 
 .hero-info {
   display: flex;
+}
+.hero-description {
+  flex-grow: 4;
+}
+
+.hero-name {
+  padding: 24px 0px 0px 20px;
+  font-size: 2em;
 }

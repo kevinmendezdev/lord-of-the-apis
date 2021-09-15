@@ -29,7 +29,7 @@ function HeroeCard({ hero }: HeroeProps) {
               <div className="close-button" onClick={toggleModal}>
                 x
               </div>
-              <h3>{hero.name}</h3>
+              <h3 className="hero-name">{hero.name}</h3>
               <div className="hero-container">
                 <div className="hero-card">
                   <div
@@ -38,17 +38,29 @@ function HeroeCard({ hero }: HeroeProps) {
                       backgroundImage: `url(https://ringsdb.com/${hero.imagesrc})`,
                     }}
                   ></div>
+                  <p>{hero.illustrator}</p>
                   {/* <img src={`https://ringsdb.com/${hero.imagesrc}`} alt={hero.name} /> */}
                 </div>
-                <div className="hero-info">
-                  <h5>Hero info</h5>
-                  <div className="hero-stats">
-                    <p>{hero.attack}</p>
-                    <p>{hero.defense}</p>
-                    <p>{hero.health}</p>
-                    <p>{hero.willpower}</p>
+
+                <div>
+                  <div>
+                    <h5>Hero info</h5>
                   </div>
-                  <div className="hero-description">{hero.text}</div>
+                  <div className="hero-info">
+                    <div className="hero-stats">
+                      <p>{`attack: ${hero.attack}`}</p>
+                      <p>{`defense: ${hero.defense}`}</p>
+                      <p>{`health: ${hero.health}`}</p>
+                      <p>{`willpower: ${hero.willpower}`}</p>
+                    </div>
+                    <div className="hero-description">
+                      <p>{hero.text}</p>
+                      <p>{hero.flavor}</p>
+                      <a className="button" href={hero.url}>
+                        Open
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
