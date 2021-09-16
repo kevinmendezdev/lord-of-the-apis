@@ -101,9 +101,12 @@
   padding: 0px 30px;
 }
 
-.hero-card-image {
+.background-image {
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.hero-card-image {
   height: 333px;
   width: 235px;
   margin: 24px 0px;
@@ -113,6 +116,11 @@
   width: 307px;
   max-width: 264px;
   width: 267px; */
+}
+
+.hero-card-image-modal {
+  height: 430px;
+  width: 324px;
 }
 
 @media (max-width: 600px) {
@@ -131,7 +139,9 @@
 .hero-stats {
   flex: 0 0 20%;
 }
-
+.hero-stats p {
+  font-weight: bold;
+}
 .hero-name {
   padding: 24px 0px 0px 20px;
   font-size: 2em;

@@ -1,7 +1,5 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import SearchDesk from './SearchDeck';
+import SearchDeck from './SearchDeck';
 
 function App() {
   return (
@@ -9,7 +7,7 @@ function App() {
       <header className="App-header">
         <h1>Lord of the APIS</h1>
       </header>
-      <SearchDesk />
+      <SearchDeck />
     </div>
   );
 }

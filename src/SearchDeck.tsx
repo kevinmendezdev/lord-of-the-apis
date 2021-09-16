@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Results from './Results';
-import { Hero } from './Hero';
+import Results from './components/Results';
+import { Hero } from './model/Hero';
 import { clearTimeout } from 'timers';
-import PulseLoader from 'react-spinners/PulseLoader';
-import Loader from './Loader';
-import ErrorMessage from './ErrorMessage';
+import Loader from './components/Loader';
+import ErrorMessage from './components/ErrorMessage';
 
 function SearchDeck() {
   const [isLoading, setIsLoading] = useState(false);
@@ -61,12 +59,7 @@ function SearchDeck() {
     return json;
   }
   function onChange(e: React.FormEvent<HTMLInputElement>) {
-    // setTimeout(() => {
-    //   // console.log(e.currentTarget.value);
-    //   requestDecks();
-    // }, 3000);
     setDeckId(+e.currentTarget.value);
-
     console.log(e.currentTarget.value);
     requestDecks();
   }

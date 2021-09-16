@@ -1,4 +1,4 @@
-import brokenSword from './broken-sword.png';
+import brokenSword from '../assets/broken-sword.png';
 
 const ErrorMessage = ({ error }: { error: string }) => {
   return (

@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { Hero } from './Hero';
+import { Hero } from './model/Hero';
 import Modal from './Modal';
+import parse from 'html-react-parser';
+import * as Const from './constants';
 
 type HeroeProps = {
   hero: Hero;
@@ -24,10 +26,10 @@ function HeroeCard({ hero }: HeroeProps) {
       </div> */}
 
       <div
-        className="hero-card-image"
+        className="hero-card-image background-image"
         onClick={toggleModal}
         style={{
-          backgroundImage: `url(https://ringsdb.com/${hero.imagesrc})`,
+          backgroundImage: `url(${Const.API_URL}${hero.imagesrc})`,
         }}
       ></div>
 
@@ -42,9 +44,9 @@ function HeroeCard({ hero }: HeroeProps) {
               <div className="hero-container">
                 <div className="hero-card">
                   <div
-                    className="hero-card-image"
+                    className="hero-card-image-modal background-image"
                     style={{
-                      backgroundImage: `url(https://ringsdb.com/${hero.imagesrc})`,
+                      backgroundImage: `url(${Const.API_URL}${hero.imagesrc})`,
                     }}
                   ></div>
                   <p className="ilustrator-name">{` Illustrator: ${hero.illustrator}`}</p>
@@ -53,7 +55,7 @@ function HeroeCard({ hero }: HeroeProps) {
 
                 <div className="hero-modal-container">
                   <div>
-                    <h5>Hero info</h5>
+                    <h3>Hero info</h3>
                   </div>
                   <div className="hero-info">
                     <div className="hero-stats">
@@ -63,8 +65,8 @@ function HeroeCard({ hero }: HeroeProps) {
                       <p>{`willpower: ${hero.willpower}`}</p>
                     </div>
                     <div className="hero-description">
-                      <p>{hero.text}</p>
-                      <p>{hero.flavor}</p>
+                      <p>{parse(hero.text)}</p>
+                      <p>{parse(hero.flavor)}</p>
                       <a className="button" href={hero.url}>
                         Open
                       </a>
