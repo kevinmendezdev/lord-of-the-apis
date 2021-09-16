@@ -70,28 +70,34 @@ function SearchDeck() {
 
   return (
     <div className="App">
-      <form>
-        <label>
-          Search for a decklist here:
-          <input
-            type="number"
-            name="name"
-            onChange={onChange}
-            value={deckId}
-          />
-        </label>
-      </form>
-      {isLoading ? (
-        <p>loading</p>
-      ) : loadingStatus ? (
-        <Results heroes={heroes} />
-      ) : (
-        <div>
-          <p>Oops!</p>
-          <p>{error}</p>
-          <p>Try again with other hero id!</p>
+      <div className="app-wrapper">
+        <form>
+          <label>
+            Search for a decklist here:
+            <input
+              type="number"
+              name="name"
+              onChange={onChange}
+              value={deckId}
+            />
+          </label>
+        </form>
+        <div className="heroes-render-container">
+          {isLoading ? (
+            <div className="status loading">
+              <p>loading</p>
+            </div>
+          ) : loadingStatus ? (
+            <Results heroes={heroes} />
+          ) : (
+            <div className="status error-Message">
+              <p>Oops!</p>
+              <p>{error}</p>
+              <p>Try again with other hero id!</p>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 }

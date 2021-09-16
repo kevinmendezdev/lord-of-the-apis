@@ -15,12 +15,21 @@ function HeroeCard({ hero }: HeroeProps) {
 
   return (
     <div>
-      <div className="heroCard" key={hero.name} onClick={toggleModal}>
+      {/* <div className="heroCard" key={hero.name} onClick={toggleModal}>
         <img
           src={`https://ringsdb.com/${hero.imagesrc}`}
           alt={hero.name}
         />
-      </div>
+
+      </div> */}
+
+      <div
+        className="hero-card-image"
+        onClick={toggleModal}
+        style={{
+          backgroundImage: `url(https://ringsdb.com/${hero.imagesrc})`,
+        }}
+      ></div>
 
       {showModal ? (
         <Modal>
@@ -38,7 +47,7 @@ function HeroeCard({ hero }: HeroeProps) {
                       backgroundImage: `url(https://ringsdb.com/${hero.imagesrc})`,
                     }}
                   ></div>
-                  <p>{hero.illustrator}</p>
+                  <p className="ilustrator-name">{` Illustrator: ${hero.illustrator}`}</p>
                   {/* <img src={`https://ringsdb.com/${hero.imagesrc}`} alt={hero.name} /> */}
                 </div>
 
