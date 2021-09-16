@@ -4,6 +4,9 @@ import './App.css';
 import Results from './Results';
 import { Hero } from './Hero';
 import { clearTimeout } from 'timers';
+import PulseLoader from 'react-spinners/PulseLoader';
+import Loader from './Loader';
+import ErrorMessage from './ErrorMessage';
 
 function SearchDeck() {
   const [isLoading, setIsLoading] = useState(false);
@@ -47,7 +50,7 @@ function SearchDeck() {
     setTimeout(() => {
       console.log(json);
       setIsLoading(false);
-    }, 1000);
+    }, 2000);
   }
   async function fetchHeroe(heroe: string): Promise<Hero> {
     const res = await fetch(
@@ -72,7 +75,7 @@ function SearchDeck() {
     <div className="App">
       <div className="app-wrapper">
         <form>
-          <label>
+          <label className="hero-search">
             Search for a decklist here:
             <input
               type="number"
@@ -84,17 +87,11 @@ function SearchDeck() {
         </form>
         <div className="heroes-render-container">
           {isLoading ? (
-            <div className="status loading">
-              <p>loading</p>
-            </div>
+            <Loader />
           ) : loadingStatus ? (
             <Results heroes={heroes} />
           ) : (
-            <div className="status error-Message">
-              <p>Oops!</p>
-              <p>{error}</p>
-              <p>Try again with other hero id!</p>
-            </div>
+            <ErrorMessage error={error} />
           )}
         </div>
       </div>

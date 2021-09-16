@@ -51,7 +51,7 @@ function HeroeCard({ hero }: HeroeProps) {
                   {/* <img src={`https://ringsdb.com/${hero.imagesrc}`} alt={hero.name} /> */}
                 </div>
 
-                <div>
+                <div className="hero-modal-container">
                   <div>
                     <h5>Hero info</h5>
                   </div>
