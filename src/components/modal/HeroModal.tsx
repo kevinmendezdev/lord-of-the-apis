@@ -1,6 +1,7 @@
 import Modal from '../../components/modal/Modal';
 import parse from 'html-react-parser';
 import { Hero } from '../../model/Hero';
+import Button from './Button';
 
 import * as Const from '../../constants';
 
@@ -56,16 +57,3 @@ const HeroModal = ({ hero, toggle }: HeroModalProps) => {
 };
 
 export default HeroModal;
-
-type ButtonProps = {
-  href: string;
-  title: string;
-};
-
-const Button = ({ href, title }: ButtonProps) => {
-  return (
-    <a className="button" href={href}>
-      Open
-    </a>
-  );
-};
