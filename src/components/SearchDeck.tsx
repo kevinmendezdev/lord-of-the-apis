@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
-import Results from './components/Results';
-import { Hero } from './model/Hero';
+// import '..//App.css';
+import Results from './Results';
+import { Hero } from '../model/Hero';
 import { clearTimeout } from 'timers';
-import Loader from './components/Loader';
-import ErrorMessage from './components/ErrorMessage';
+import Loader from './Loader';
+import ErrorMessage from './ErrorMessage';
 
 function SearchDeck() {
   const [isLoading, setIsLoading] = useState(false);

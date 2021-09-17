@@ -1,5 +1,5 @@
 import { Hero } from '../model/Hero';
-import HeroeCard from '../HeroCard';
+import HeroeCard from './HeroCard';
 
 type ResultsProps = {
   heroes: Hero[];

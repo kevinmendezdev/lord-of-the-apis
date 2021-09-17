@@ -1,5 +1,5 @@
 import './App.css';
-import SearchDeck from './SearchDeck';
+import SearchDeck from './components/SearchDeck';
 
 function App() {
   return (
