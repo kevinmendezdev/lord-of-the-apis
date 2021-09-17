@@ -2,33 +2,47 @@ import Modal from '../../components/modal/Modal';
 import parse from 'html-react-parser';
 import { Hero } from '../../model/Hero';
 import Button from './Button';
+import { css } from '@emotion/react';
 
 import * as Const from '../../constants';
+import CloseButton from './CloseButton';
+import styled from '@emotion/styled';
+import HeroImage from '../HeroImage';
 
 type HeroModalProps = {
   hero: Hero;
   toggle: any;
 };
 
+const ModalBackground = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity */
+  position: absolute;
+`;
+
+const IllustratorName = styled.p`
+  font-style: italic;
+  font-size: 14px;
+`;
+
 const HeroModal = ({ hero, toggle }: HeroModalProps) => {
   return (
     <Modal>
-      <div className="modal-background">
+      <ModalBackground>
         <div className="modal-container">
-          <div className="close-button" onClick={toggle}>
-            x
-          </div>
+          <CloseButton onClick={toggle} />
           <h3 className="hero-name">{hero.name}</h3>
           <div className="hero-container">
             <div className="hero-card">
-              <div
-                className="hero-card-image-modal background-image"
-                style={{
-                  backgroundImage: `url(${Const.API_URL}${hero.imagesrc})`,
-                }}
-              ></div>
-              <p className="ilustrator-name">{` Illustrator: ${hero.illustrator}`}</p>
-              {/* <img src={`https://ringsdb.com/${hero.imagesrc}`} alt={hero.name} /> */}
+              <HeroImage
+                hero={hero}
+                height={430}
+                width={324}
+                onClick={null}
+              />
+              <IllustratorName>{` Illustrator: ${hero.illustrator}`}</IllustratorName>
             </div>
 
             <div className="hero-modal-container">
@@ -51,7 +65,7 @@ const HeroModal = ({ hero, toggle }: HeroModalProps) => {
             </div>
           </div>
         </div>
-      </div>
+      </ModalBackground>
     </Modal>
   );
 };
