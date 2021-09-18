@@ -1,22 +1,7 @@
-.hero-container {
-  display: flex;
-  padding: 0px 30px;
-}
-
-@media (max-width: 600px) {
-  .hero-card-image {
-    margin: 24px auto;
-  }
-}
-
 .status {
   margin: 0;
   position: absolute;
   top: 48%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.hero-modal-container {
-  margin: -2px 52px;
 }

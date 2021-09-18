@@ -19,10 +19,10 @@ function SearchDeck() {
   }, []);
 
   //debounce for avoiding multiple requests of decks
-  const debounceRequestDeck = useCallback(
-    debounce(requestDecks, 600),
-    [],
-  );
+  // const debounceRequestDeck = useCallback(
+  //   debounce(requestDecks, 600),
+  //   [setDeckId],
+  // );
 
   async function requestDecks() {
     console.log('request sent');
@@ -71,7 +71,8 @@ function SearchDeck() {
   function changeHandler(e: React.FormEvent<HTMLInputElement>) {
     setDeckId(+e.currentTarget.value);
     console.log(e.currentTarget.value);
-    debounceRequestDeck();
+    requestDecks();
+    // debounceRequestDeck();
   }
 
   return (

@@ -36,6 +36,9 @@ const ModalContainer = styled.div`
 `;
 
 const HeroInfoContainer = styled.div`
+  margin: -2px 52px;
+`;
+const HeroInfo = styled.div`
   display: flex;
   flex-wrap: wrap;
   @media (max-width: 600px) {
@@ -109,7 +112,7 @@ const HeroModal = ({ hero, toggle }: HeroModalProps) => {
               />
               <IllustratorName>{` Illustrator: ${hero.illustrator}`}</IllustratorName>
             </HeroCard>
-            <div className="hero-modal-container">
+            <HeroInfoContainer>
               <h3
                 css={css`
                   margin: 0;
@@ -117,11 +120,11 @@ const HeroModal = ({ hero, toggle }: HeroModalProps) => {
               >
                 Hero info
               </h3>
-              <HeroInfoContainer>
+              <HeroInfo>
                 <HeroStats hero={hero} />
                 <HeroDescription hero={hero} />
-              </HeroInfoContainer>
-            </div>
+              </HeroInfo>
+            </HeroInfoContainer>
           </HeroContainer>
         </ModalContainer>
       </ModalBackground>
