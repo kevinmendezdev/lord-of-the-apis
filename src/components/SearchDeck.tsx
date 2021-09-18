@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Results from './Results';
 import { Hero } from '../model/Hero';
-import { clearTimeout } from 'timers';
 import Loader from './Loader';
 import ErrorMessage from './ErrorMessage';
 import SearchBar from './SearchBar';
 import * as Const from '../constants';
+import debounce from 'lodash.debounce';
 
 function SearchDeck() {
   const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +18,14 @@ function SearchDeck() {
     requestDecks();
   }, []);
 
+  //debounce for avoiding multiple requests of decks
+  const debounceRequestDeck = useCallback(
+    debounce(requestDecks, 600),
+    [],
+  );
+
   async function requestDecks() {
+    console.log('request sent');
     setIsLoading(true);
     const res = await fetch(
       `${Const.API_URL}/api/oauth2/deck/load/${deckId}`,
@@ -61,15 +68,15 @@ function SearchDeck() {
     return json;
   }
 
-  function onChange(e: React.FormEvent<HTMLInputElement>) {
+  function changeHandler(e: React.FormEvent<HTMLInputElement>) {
     setDeckId(+e.currentTarget.value);
     console.log(e.currentTarget.value);
-    requestDecks();
+    debounceRequestDeck();
   }
 
   return (
     <>
-      <SearchBar value={deckId} onChange={onChange} />
+      <SearchBar value={deckId} onChange={changeHandler} />
       <>
         {isLoading ? (
           <Loader />
