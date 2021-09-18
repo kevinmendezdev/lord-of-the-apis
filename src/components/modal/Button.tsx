@@ -21,6 +21,9 @@ const Button = ({ href, title }: ButtonProps) => {
         margin: 4px 2px;
         cursor: pointer;
         margin-bottom: 20px;
+        display: block;
+        margin: 0 auto;
+        max-width: 60px;
       `}
       className="button"
       href={href}
