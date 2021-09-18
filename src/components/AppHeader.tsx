@@ -9,6 +9,7 @@ const AppHeader = ({ title }: AppHeaderProps) => {
       <h1
         css={css`
           font-size: 3em;
+          text-transform: uppercase;
           @media (max-width: 600px) {
             & {
               font-size: 2.8em;

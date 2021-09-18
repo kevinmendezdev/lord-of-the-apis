@@ -5,6 +5,10 @@ export type Hero = {
   health: number;
   willpower: number;
   threat: number;
+  position: number;
+  quantity: number;
+  traits: string;
+  typeName: string;
   url: string;
   text: string;
   name: string;

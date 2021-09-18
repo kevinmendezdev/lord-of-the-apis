@@ -52,9 +52,10 @@ const HeroStats = ({ hero }: HeroProps) => {
   return (
     <div
       css={css`
-        flex: 0 0 20%;
+        flex: 0 0 30%;
         & p {
           font-weight: bold;
+          font-size: 1.3em;
         }
       `}
     >
@@ -62,6 +63,7 @@ const HeroStats = ({ hero }: HeroProps) => {
       <p>{`defense: ${hero.defense}`}</p>
       <p>{`health: ${hero.health}`}</p>
       <p>{`willpower: ${hero.willpower}`}</p>
+      <p>{`threat: ${hero.threat}`}</p>
     </div>
   );
 };
@@ -70,11 +72,12 @@ const HeroDescription = ({ hero }: HeroProps) => {
   return (
     <div
       css={css`
-        flex: 0 0 80%;
+        flex: 0 0 70%;
       `}
     >
       <p>{parse(hero.text)}</p>
       <p>{parse(hero.flavor)}</p>
+      <p>{hero.typeName}</p>
       <Button href={hero.url} title="Open" />
     </div>
   );
@@ -113,13 +116,6 @@ const HeroModal = ({ hero, toggle }: HeroModalProps) => {
               <IllustratorName>{` Illustrator: ${hero.illustrator}`}</IllustratorName>
             </HeroCard>
             <HeroInfoContainer>
-              <h3
-                css={css`
-                  margin: 0;
-                `}
-              >
-                Hero info
-              </h3>
               <HeroInfo>
                 <HeroStats hero={hero} />
                 <HeroDescription hero={hero} />
