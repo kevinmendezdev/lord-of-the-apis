@@ -27,7 +27,7 @@ const SearchBar = ({ onChange, value }: SearchBarProps) => {
         Search for a decklist here:
         <input
           type="number"
-          name="name"
+          name="deck-search"
           onChange={(e) => onChange(e)}
           value={value}
         />

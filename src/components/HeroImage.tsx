@@ -25,6 +25,14 @@ const HeroImage = ({
         background-repeat: no-repeat;
         background-image: url(${Const.API_URL}/${hero.imagesrc});
         margin: 24px auto;
+
+        // @media (max-width: 600px) {
+        //   & {
+        //     margin: 0px auto;
+        //     width: 200px;
+        //     height: 280px;
+        //   }
+        // }
       `}
     ></div>
   );

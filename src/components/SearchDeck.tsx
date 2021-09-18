@@ -68,20 +68,18 @@ function SearchDeck() {
   }
 
   return (
-    <div className="App">
-      <div className="app-wrapper">
-        <SearchBar value={deckId} onChange={onChange} />
-        <div className="heroes-render-container">
-          {isLoading ? (
-            <Loader />
-          ) : loadingStatus ? (
-            <Results heroes={heroes} />
-          ) : (
-            <ErrorMessage error={error} />
-          )}
-        </div>
-      </div>
-    </div>
+    <>
+      <SearchBar value={deckId} onChange={onChange} />
+      <>
+        {isLoading ? (
+          <Loader />
+        ) : loadingStatus ? (
+          <Results heroes={heroes} />
+        ) : (
+          <ErrorMessage error={error} />
+        )}
+      </>
+    </>
   );
 }
 

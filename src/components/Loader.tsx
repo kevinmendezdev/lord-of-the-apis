@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 
 const Loader = () => {
   return (
-    <div css={css``} className="status">
+    <div className="status">
       <p> loading</p>
       <PulseLoader color="#000000" />
     </div>

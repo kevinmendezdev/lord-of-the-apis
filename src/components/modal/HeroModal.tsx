@@ -37,6 +37,11 @@ const ModalContainer = styled.div`
 const HeroInfoContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  @media (max-width: 600px) {
+    & {
+      flex-wrap: initial;
+    }
+  }
 `;
 
 const HeroStats = ({ hero }: HeroProps) => {
