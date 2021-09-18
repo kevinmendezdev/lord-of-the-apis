@@ -19,6 +19,7 @@ const ModalBackground = styled.div`
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity */
   position: absolute;
+  top: 0;
 `;
 
 const IllustratorName = styled.p`
@@ -77,7 +78,7 @@ const HeroDescription = ({ hero }: HeroProps) => {
 };
 
 const HeroName = styled.h3`
-  padding: 24px 0px 0px 20px;
+  padding: 34px 0px 0px 28px;
   font-size: 2em;
 `;
 
@@ -109,7 +110,13 @@ const HeroModal = ({ hero, toggle }: HeroModalProps) => {
               <IllustratorName>{` Illustrator: ${hero.illustrator}`}</IllustratorName>
             </HeroCard>
             <div className="hero-modal-container">
-              <h3>Hero info</h3>
+              <h3
+                css={css`
+                  margin: 0;
+                `}
+              >
+                Hero info
+              </h3>
               <HeroInfoContainer>
                 <HeroStats hero={hero} />
                 <HeroDescription hero={hero} />
