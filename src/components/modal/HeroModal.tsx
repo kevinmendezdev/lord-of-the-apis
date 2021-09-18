@@ -1,10 +1,9 @@
 import Modal from '../../components/modal/Modal';
 import parse from 'html-react-parser';
-import { Hero } from '../../model/Hero';
+import { Hero, HeroProps } from '../../model/Hero';
 import Button from './Button';
 import { css } from '@emotion/react';
 
-import * as Const from '../../constants';
 import CloseButton from './CloseButton';
 import styled from '@emotion/styled';
 import HeroImage from '../HeroImage';
@@ -27,15 +26,75 @@ const IllustratorName = styled.p`
   font-size: 14px;
 `;
 
+const ModalContainer = styled.div`
+  position: relative;
+  width: 85%;
+  background: white;
+  margin: 0 auto;
+  top: 5%;
+`;
+
+const HeroInfoContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const HeroStats = ({ hero }: HeroProps) => {
+  return (
+    <div
+      css={css`
+        flex: 0 0 20%;
+        & p {
+          font-weight: bold;
+        }
+      `}
+    >
+      <p>{`attack: ${hero.attack}`}</p>
+      <p>{`defense: ${hero.defense}`}</p>
+      <p>{`health: ${hero.health}`}</p>
+      <p>{`willpower: ${hero.willpower}`}</p>
+    </div>
+  );
+};
+
+const HeroDescription = ({ hero }: HeroProps) => {
+  return (
+    <div
+      css={css`
+        flex: 0 0 80%;
+      `}
+    >
+      <p>{parse(hero.text)}</p>
+      <p>{parse(hero.flavor)}</p>
+      <Button href={hero.url} title="Open" />
+    </div>
+  );
+};
+
+const HeroName = styled.h3`
+  padding: 24px 0px 0px 20px;
+  font-size: 2em;
+`;
+
+const HeroContainer = styled.div`
+  display: flex;
+  padding: 0px 30px;
+  @media (max-width: 600px) {
+    & {
+      flex-direction: column;
+    }
+  }
+`;
+const HeroCard = styled.div``;
 const HeroModal = ({ hero, toggle }: HeroModalProps) => {
   return (
     <Modal>
       <ModalBackground>
-        <div className="modal-container">
+        <ModalContainer>
           <CloseButton onClick={toggle} />
-          <h3 className="hero-name">{hero.name}</h3>
-          <div className="hero-container">
-            <div className="hero-card">
+          <HeroName>{hero.name}</HeroName>
+          <HeroContainer>
+            <HeroCard>
               <HeroImage
                 hero={hero}
                 height={430}
@@ -43,28 +102,16 @@ const HeroModal = ({ hero, toggle }: HeroModalProps) => {
                 onClick={null}
               />
               <IllustratorName>{` Illustrator: ${hero.illustrator}`}</IllustratorName>
-            </div>
-
+            </HeroCard>
             <div className="hero-modal-container">
-              <div>
-                <h3>Hero info</h3>
-              </div>
-              <div className="hero-info">
-                <div className="hero-stats">
-                  <p>{`attack: ${hero.attack}`}</p>
-                  <p>{`defense: ${hero.defense}`}</p>
-                  <p>{`health: ${hero.health}`}</p>
-                  <p>{`willpower: ${hero.willpower}`}</p>
-                </div>
-                <div className="hero-description">
-                  <p>{parse(hero.text)}</p>
-                  <p>{parse(hero.flavor)}</p>
-                  <Button href={hero.url} title="Open" />
-                </div>
-              </div>
+              <h3>Hero info</h3>
+              <HeroInfoContainer>
+                <HeroStats hero={hero} />
+                <HeroDescription hero={hero} />
+              </HeroInfoContainer>
             </div>
-          </div>
-        </div>
+          </HeroContainer>
+        </ModalContainer>
       </ModalBackground>
     </Modal>
   );

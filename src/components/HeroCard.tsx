@@ -1,21 +1,10 @@
 import { useState } from 'react';
-import { Hero } from '../model/Hero';
 
-import * as Const from '../constants';
+import { HeroProps } from '../model/Hero';
 import HeroModal from './modal/HeroModal';
-import styled from '@emotion/styled';
 import HeroImage from './HeroImage';
 
-// const HeroImage = styled.div`
-//   height: 430px;
-//   width: 324px;
-// `;
-
-type HeroeProps = {
-  hero: Hero;
-};
-
-function HeroeCard({ hero }: HeroeProps) {
+function HeroeCard({ hero }: HeroProps) {
   const [showModal, changeModal] = useState(false);
   function toggleModal() {
     changeModal(!showModal);

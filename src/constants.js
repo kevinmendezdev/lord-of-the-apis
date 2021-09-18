@@ -1,1 +1,1 @@
-export const API_URL = 'https://ringsdb.com/';
+export const API_URL = 'https://ringsdb.com';

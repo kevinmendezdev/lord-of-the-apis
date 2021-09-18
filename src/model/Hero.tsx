@@ -12,3 +12,7 @@ export type Hero = {
   flavor: string;
   illustrator: string;
 };
+
+export type HeroProps = {
+  hero: Hero;
+};

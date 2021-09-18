@@ -1,20 +1,35 @@
+import React from 'react';
+
 import { Hero } from '../model/Hero';
 import HeroeCard from './HeroCard';
+import styled from '@emotion/styled';
 
 type ResultsProps = {
   heroes: Hero[];
 };
 
+const HeroCardsContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  @media (max-width: 600px) {
+    & {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+`;
+
 const Results = ({ heroes }: ResultsProps) => {
   return heroes.length > 0 ? (
-    <div className="heroes">
+    <>
       <h3>Here are your heroes</h3>
-      <div className="heroCards">
+      <HeroCardsContainer>
         {heroes.map((heroe) => (
           <HeroeCard hero={heroe} />
         ))}
-      </div>
-    </div>
+      </HeroCardsContainer>
+    </>
   ) : null;
 };
 

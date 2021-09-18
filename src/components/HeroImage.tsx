@@ -23,7 +23,8 @@ const HeroImage = ({
         width: ${width}px;
         background-size: contain;
         background-repeat: no-repeat;
-        background-image: url(${Const.API_URL}${hero.imagesrc});
+        background-image: url(${Const.API_URL}/${hero.imagesrc});
+        margin: 24px auto;
       `}
     ></div>
   );

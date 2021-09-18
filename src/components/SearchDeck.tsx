@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-// import '..//App.css';
 import Results from './Results';
 import { Hero } from '../model/Hero';
 import { clearTimeout } from 'timers';
 import Loader from './Loader';
 import ErrorMessage from './ErrorMessage';
+import SearchBar from './SearchBar';
+import * as Const from '../constants';
 
 function SearchDeck() {
   const [isLoading, setIsLoading] = useState(false);
@@ -20,7 +21,7 @@ function SearchDeck() {
   async function requestDecks() {
     setIsLoading(true);
     const res = await fetch(
-      `https://ringsdb.com/api/oauth2/deck/load/${deckId}`,
+      `${Const.API_URL}/api/oauth2/deck/load/${deckId}`,
     );
 
     const json = await res.json();
@@ -50,6 +51,7 @@ function SearchDeck() {
       setIsLoading(false);
     }, 2000);
   }
+
   async function fetchHeroe(heroe: string): Promise<Hero> {
     const res = await fetch(
       `https://ringsdb.com/api/public/card/${heroe}`,
@@ -58,6 +60,7 @@ function SearchDeck() {
     console.log(json);
     return json;
   }
+
   function onChange(e: React.FormEvent<HTMLInputElement>) {
     setDeckId(+e.currentTarget.value);
     console.log(e.currentTarget.value);
@@ -67,17 +70,7 @@ function SearchDeck() {
   return (
     <div className="App">
       <div className="app-wrapper">
-        <form>
-          <label className="hero-search">
-            Search for a decklist here:
-            <input
-              type="number"
-              name="name"
-              onChange={onChange}
-              value={deckId}
-            />
-          </label>
-        </form>
+        <SearchBar value={deckId} onChange={onChange} />
         <div className="heroes-render-container">
           {isLoading ? (
             <Loader />
