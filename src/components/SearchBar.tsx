@@ -1,7 +1,8 @@
 import { css } from '@emotion/react';
+import { FormEvent } from 'react';
 
 type SearchBarProps = {
-  onChange: any;
+  onChange: (event: FormEvent<HTMLInputElement>) => void;
   value: number;
 };
 const SearchBar = ({ onChange, value }: SearchBarProps) => {
@@ -27,7 +28,7 @@ const SearchBar = ({ onChange, value }: SearchBarProps) => {
         <input
           type="number"
           name="name"
-          onChange={onChange}
+          onChange={(e) => onChange(e)}
           value={value}
         />
       </label>

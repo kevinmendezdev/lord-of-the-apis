@@ -6,7 +6,7 @@ import HeroImage from './HeroImage';
 
 function HeroeCard({ hero }: HeroProps) {
   const [showModal, changeModal] = useState(false);
-  function toggleModal() {
+  function toggleModal(): void {
     changeModal(!showModal);
     console.log('toggle modal');
   }
