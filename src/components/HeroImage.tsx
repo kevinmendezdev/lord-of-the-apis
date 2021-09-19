@@ -15,10 +15,12 @@ const HeroImage = ({ hero, onClick }: HeroImageProps) => {
       <img
         onClick={onClick}
         css={css`
-          max-width: 250px;
+          max-width: 280px;
+          min-width: 200px;
           width: 100%;
           height: auto;
           margin: 20px auto;
+          display: block;
         `}
         src={`${Const.API_BASE_URL}/${hero.imagesrc}`}
         alt={hero.name}

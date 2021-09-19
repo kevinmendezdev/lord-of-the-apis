@@ -41,6 +41,10 @@ const ModalContainer = styled.div`
 
 const HeroInfoContainer = styled.div`
   margin: -2px 52px;
+  @media (max-width: 600px) {
+    & {
+      margin: 0;
+    }
 `;
 const HeroInfo = styled.div`
   display: flex;
@@ -77,6 +81,10 @@ const HeroDescription = ({ hero }: HeroProps) => {
     <div
       css={css`
         flex: 0 0 70%;
+        @media (max-width: 500px) {
+          & p {
+            font-size:0.7em;
+          }
       `}
     >
       <p>{parse(hero.text)}</p>
@@ -90,6 +98,10 @@ const HeroDescription = ({ hero }: HeroProps) => {
 const HeroName = styled.h3`
   padding: 34px 0px 0px 28px;
   font-size: 2em;
+  @media (max-width: 500px) {
+    &  {
+      font-size:1.4em;
+    }
 `;
 
 const HeroContainer = styled.div`

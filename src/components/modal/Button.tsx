@@ -22,7 +22,7 @@ const Button = ({ href, title }: ButtonProps) => {
         cursor: pointer;
         margin-bottom: 20px;
         display: block;
-        margin: 0 auto;
+        margin: 20px auto;
         max-width: 60px;
       `}
       className="button"
