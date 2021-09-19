@@ -30,15 +30,15 @@ export default function useHeroList(deckId = 20) {
     );
 
     const json = await res.json();
-    console.log(`json: ${hasData}`);
-    if ('success' in json) {
+    if ('error' in json) {
       setHasData(false);
       setErrorMessage(json.error);
+      console.log(`ERROR: ${json.error}`);
     } else {
       setHasData(true);
       console.log('heroes loading');
       if ('heroes' in json) {
-        console.log('heroList in da house');
+        console.log('json contains hero');
         let heroList = Object.keys(json.heroes);
         let heroListObjects = heroList.map((hero: string) =>
           fetchHeroe(hero),
@@ -46,6 +46,8 @@ export default function useHeroList(deckId = 20) {
         Promise.all(heroListObjects).then((heroList: Hero[]) => {
           setheroList(heroList);
         });
+
+        console.log(`json has data: ${hasData}`);
         console.log('heroList');
         console.log(heroList);
         console.log(heroListObjects);
@@ -63,8 +65,8 @@ export default function useHeroList(deckId = 20) {
       `https://ringsdb.com/api/public/card/${heroe}`,
     );
     const json = await res.json();
-    console.log(json);
     return json;
   }
+
   return [heroList, isLoading, hasData, errorMessage];
 }
