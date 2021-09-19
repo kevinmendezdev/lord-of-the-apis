@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 
 type CloseButtonProps = {
-  onClick: any;
+  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
 };
 
 const CloseButton = ({ onClick }: CloseButtonProps) => {

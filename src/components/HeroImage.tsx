@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import { css } from '@emotion/react';
 
 import { Hero } from '../model/Hero';
@@ -6,7 +6,7 @@ import * as Const from '../constants';
 
 type HeroImageProps = {
   hero: Hero;
-  onClick: any;
+  onClick: (event: React.MouseEvent<HTMLImageElement>) => void;
 };
 
 const HeroImage = ({ hero, onClick }: HeroImageProps) => {

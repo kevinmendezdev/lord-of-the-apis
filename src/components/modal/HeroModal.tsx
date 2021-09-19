@@ -6,11 +6,11 @@ import { css } from '@emotion/react';
 
 import CloseButton from './CloseButton';
 import styled from '@emotion/styled';
-import HeroImage from '../HeroImage';
+import * as Const from '../../constants';
 
 type HeroModalProps = {
   hero: Hero;
-  toggle: any;
+  toggle: (event: React.MouseEvent<HTMLDivElement>) => void;
 };
 
 export type HeroProps = {
@@ -29,6 +29,11 @@ const ModalBackground = styled.div`
 const IllustratorName = styled.p`
   font-style: italic;
   font-size: 14px;
+  @media (max-width: 600px) {
+    &  {
+      margin: 5px;
+      text-align: center;
+    }
 `;
 
 const ModalContainer = styled.div`
@@ -37,6 +42,7 @@ const ModalContainer = styled.div`
   background: white;
   margin: 0 auto;
   top: 5%;
+  max-width: 900px;
 `;
 
 const HeroInfoContainer = styled.div`
@@ -62,6 +68,7 @@ const HeroContainer = styled.div`
   @media (max-width: 600px) {
     & {
       grid-template-columns: 1fr;
+      gap: 0;
     }
   }
 `;
@@ -109,6 +116,19 @@ const HeroDescription = ({ hero }: HeroProps) => {
   );
 };
 
+const HeroImagePreview = styled.img`
+  max-width: 380px;
+  min-width: 200px;
+  width: 100%;
+  height: auto;
+  display: block;
+  @media (max-width: 600px) {
+   & {
+      max-width: 200px;
+      margin: 0px auto;
+    }
+`;
+
 const HeroCard = styled.div``;
 const HeroModal = ({ hero, toggle }: HeroModalProps) => {
   return (
@@ -119,7 +139,9 @@ const HeroModal = ({ hero, toggle }: HeroModalProps) => {
           <HeroName>{hero.name}</HeroName>
           <HeroContainer>
             <HeroCard>
-              <HeroImage hero={hero} onClick={null} />
+              <HeroImagePreview
+                src={`${Const.API_BASE_URL}/${hero.imagesrc}`}
+              />
               <IllustratorName>{` Illustrator: ${hero.illustrator}`}</IllustratorName>
             </HeroCard>
             <HeroInfoContainer>
