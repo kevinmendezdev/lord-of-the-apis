@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Hero } from './model/Hero';
 
 import * as Const from './constants';
+import debounce from 'lodash.debounce';
 
 export default function useHeroList(deckId = 20) {
   const [heroList, setheroList] = useState<Hero[]>([]);
@@ -10,11 +11,18 @@ export default function useHeroList(deckId = 20) {
   const [hasData, setHasData] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  //debounce for avoiding multiple requests of decks
+  const debounceRequestDeck = useCallback(
+    debounce((deckId) => requestDecks(deckId), 600),
+    [],
+  );
+
   useEffect(() => {
-    requestDecks();
+    // requestDecks();
+    debounceRequestDeck(deckId);
   }, [deckId]);
 
-  async function requestDecks() {
+  async function requestDecks(deckId: number) {
     console.log('request sent');
     setIsLoading(true);
     const res = await fetch(
