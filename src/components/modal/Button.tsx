@@ -28,7 +28,7 @@ const Button = ({ href, title }: ButtonProps) => {
       className="button"
       href={href}
     >
-      Open
+      {title}
     </a>
   );
 };

@@ -23,7 +23,8 @@ const AppHeader = ({ title }: AppHeaderProps) => {
           }
         `}
       >
-        Lord of the APIS
+        {' '}
+        {title}
       </h1>
     </header>
   );

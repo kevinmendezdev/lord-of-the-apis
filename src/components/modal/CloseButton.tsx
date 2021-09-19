@@ -12,7 +12,7 @@ const CloseButton = ({ onClick }: CloseButtonProps) => {
         right: 38px;
         top: 10px;
         font-size: 46px;
-        @media (max-width: 500px) {
+        @media (max-width: 600px) {
           &  {
             top:15px;
             font-size: 36px;

@@ -47,13 +47,9 @@ const HeroInfoContainer = styled.div`
     }
 `;
 const HeroInfo = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  @media (max-width: 600px) {
-    & {
-      flex-wrap: initial;
-    }
-  }
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
 `;
 
 const HeroStats = ({ hero }: HeroProps) => {
@@ -65,6 +61,10 @@ const HeroStats = ({ hero }: HeroProps) => {
           font-weight: bold;
           font-size: 1.3em;
         }
+        @media (max-width: 600px) {
+          & p {
+            font-size: 1em;
+          }
       `}
     >
       <p>{`attack: ${hero.attack}`}</p>
@@ -98,18 +98,19 @@ const HeroDescription = ({ hero }: HeroProps) => {
 const HeroName = styled.h3`
   padding: 34px 0px 0px 28px;
   font-size: 2em;
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     &  {
       font-size:1.4em;
     }
 `;
 
 const HeroContainer = styled.div`
-  display: flex;
-  padding: 0px 30px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 0px 20px;
   @media (max-width: 600px) {
     & {
-      flex-direction: column;
+      grid-template-columns: 1fr;
     }
   }
 `;

@@ -23,7 +23,7 @@ const HeroImage = ({ hero, onClick }: HeroImageProps) => {
           display: block;
         `}
         src={`${Const.API_BASE_URL}/${hero.imagesrc}`}
-        alt={hero.name}
+        alt={`hero:${hero.name}`}
       />
     </>
   );
