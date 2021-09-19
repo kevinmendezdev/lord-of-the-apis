@@ -26,7 +26,7 @@ const Results = ({ heroes }: ResultsProps) => {
       <h3>Here are your heroes</h3>
       <HeroCardsContainer>
         {heroes.map((heroe) => (
-          <HeroeCard hero={heroe} />
+          <HeroeCard key={heroe.name} hero={heroe} />
         ))}
       </HeroCardsContainer>
     </>

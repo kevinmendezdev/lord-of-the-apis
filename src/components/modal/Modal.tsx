@@ -16,7 +16,7 @@ const Modal = ({ children }: Props) => {
   useEffect(() => {
     modalRoot?.appendChild(elRef.current);
     return () => modalRoot?.removeChild(elRef.current);
-  }, []);
+  }, [elRef]);
 
   return createPortal(<div>{children}</div>, elRef.current);
 };

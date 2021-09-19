@@ -4,6 +4,7 @@ import { Hero } from './model/Hero';
 import * as Const from './constants';
 import debounce from 'lodash.debounce';
 
+//custom hook for requesting herodeck from API
 export default function useHeroList(deckId = 20) {
   const [heroList, setheroList] = useState<Hero[]>([]);
   // const [deckId, setDeckId] = useState(20);
@@ -13,16 +14,15 @@ export default function useHeroList(deckId = 20) {
 
   //debounce for avoiding multiple requests of decks
   const debounceRequestDeck = useCallback(
-    debounce((deckId) => requestDecks(deckId), 600),
+    debounce(requestDeck, 600),
     [],
   );
 
   useEffect(() => {
-    // requestDecks();
     debounceRequestDeck(deckId);
-  }, [deckId]);
+  }, [deckId, debounceRequestDeck]);
 
-  async function requestDecks(deckId: number) {
+  async function requestDeck(deckId: number) {
     console.log('request sent');
     setIsLoading(true);
     const res = await fetch(

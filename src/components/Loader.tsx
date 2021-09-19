@@ -1,5 +1,4 @@
 import PulseLoader from 'react-spinners/PulseLoader';
-import { css } from '@emotion/react';
 import Center from './layout/Center';
 
 const Loader = () => {
