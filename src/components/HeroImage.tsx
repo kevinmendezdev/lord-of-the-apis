@@ -1,40 +1,29 @@
+import React from 'react';
+import { css } from '@emotion/react';
+
 import { Hero } from '../model/Hero';
 import * as Const from '../constants';
-import { css } from '@emotion/react';
 
 type HeroImageProps = {
   hero: Hero;
-  width: number;
-  height: number;
   onClick: any;
 };
 
-const HeroImage = ({
-  hero,
-  width,
-  height,
-  onClick,
-}: HeroImageProps) => {
+const HeroImage = ({ hero, onClick }: HeroImageProps) => {
   return (
-    <div
-      onClick={onClick}
-      css={css`
-        height: ${height}px;
-        width: ${width}px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-image: url(${Const.API_URL}/${hero.imagesrc});
-        margin: 24px auto;
-
-        // @media (max-width: 600px) {
-        //   & {
-        //     margin: 0px auto;
-        //     width: 200px;
-        //     height: 280px;
-        //   }
-        // }
-      `}
-    ></div>
+    <>
+      <img
+        onClick={onClick}
+        css={css`
+          max-width: 250px;
+          width: 100%;
+          height: auto;
+          margin: 20px auto;
+        `}
+        src={`${Const.API_BASE_URL}/${hero.imagesrc}`}
+        alt={hero.name}
+      />
+    </>
   );
 };
 

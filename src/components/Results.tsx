@@ -1,8 +1,9 @@
 import React from 'react';
+import styled from '@emotion/styled';
 
 import { Hero } from '../model/Hero';
 import HeroeCard from './HeroCard';
-import styled from '@emotion/styled';
+
 
 type ResultsProps = {
   heroes: Hero[];

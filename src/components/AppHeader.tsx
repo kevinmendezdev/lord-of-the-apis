@@ -15,6 +15,11 @@ const AppHeader = ({ title }: AppHeaderProps) => {
               font-size: 2.8em;
               text-align: center;
             }
+          @media (max-width: 400px) {
+            & {
+              font-size: 2em;
+              text-align: center;
+            }
           }
         `}
       >

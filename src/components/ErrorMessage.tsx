@@ -1,15 +1,17 @@
+import React from 'react';
 import { css } from '@emotion/react';
+
 import brokenSword from '../assets/broken-sword.png';
-import Center from './layout/Center';
 
 const ErrorMessage = ({ error }: { error: string }) => {
   return (
-    <Center>
+    <>
       <div
         css={css`
           display: flex;
           flex-direction: column;
           align-items: center;
+          height: 50vh;
           & > p {
             font-size: 20px;
             text-align: center;
@@ -27,7 +29,7 @@ const ErrorMessage = ({ error }: { error: string }) => {
         <p>{error}</p>
         <p>Try again with other deck id!</p>
       </div>
-    </Center>
+    </>
   );
 };
 

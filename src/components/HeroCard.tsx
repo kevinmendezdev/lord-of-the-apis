@@ -1,8 +1,12 @@
 import { useState } from 'react';
 
-import { HeroProps } from '../model/Hero';
+import { Hero } from '../model/Hero';
 import HeroModal from './modal/HeroModal';
 import HeroImage from './HeroImage';
+
+export type HeroProps = {
+  hero: Hero;
+};
 
 function HeroeCard({ hero }: HeroProps) {
   const [showModal, changeModal] = useState(false);
@@ -13,12 +17,7 @@ function HeroeCard({ hero }: HeroProps) {
 
   return (
     <div>
-      <HeroImage
-        hero={hero}
-        height={330}
-        width={244}
-        onClick={toggleModal}
-      />
+      <HeroImage hero={hero} onClick={toggleModal} />
       {showModal ? (
         <HeroModal hero={hero} toggle={toggleModal} />
       ) : null}

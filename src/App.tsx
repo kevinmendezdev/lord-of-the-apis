@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import AppHeader from './components/AppHeader';
 import SearchDeck from './components/SearchDeck';
 import { Global, css } from '@emotion/react';

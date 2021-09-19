@@ -1,6 +1,6 @@
 import Modal from '../../components/modal/Modal';
 import parse from 'html-react-parser';
-import { Hero, HeroProps } from '../../model/Hero';
+import { Hero } from '../../model/Hero';
 import Button from './Button';
 import { css } from '@emotion/react';
 
@@ -11,6 +11,10 @@ import HeroImage from '../HeroImage';
 type HeroModalProps = {
   hero: Hero;
   toggle: any;
+};
+
+export type HeroProps = {
+  hero: Hero;
 };
 
 const ModalBackground = styled.div`
@@ -107,12 +111,7 @@ const HeroModal = ({ hero, toggle }: HeroModalProps) => {
           <HeroName>{hero.name}</HeroName>
           <HeroContainer>
             <HeroCard>
-              <HeroImage
-                hero={hero}
-                height={430}
-                width={324}
-                onClick={null}
-              />
+              <HeroImage hero={hero} onClick={null} />
               <IllustratorName>{` Illustrator: ${hero.illustrator}`}</IllustratorName>
             </HeroCard>
             <HeroInfoContainer>

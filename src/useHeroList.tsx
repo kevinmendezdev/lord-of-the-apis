@@ -7,7 +7,6 @@ import debounce from 'lodash.debounce';
 //custom hook for requesting herodeck from API
 export default function useHeroList(deckId = 20) {
   const [heroList, setheroList] = useState<Hero[]>([]);
-  // const [deckId, setDeckId] = useState(20);
   const [errorMessage, setErrorMessage] = useState('');
   const [hasData, setHasData] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -25,9 +24,7 @@ export default function useHeroList(deckId = 20) {
   async function requestDeck(deckId: number) {
     console.log('request sent');
     setIsLoading(true);
-    const res = await fetch(
-      `${Const.API_URL}/api/oauth2/deck/load/${deckId}`,
-    );
+    const res = await fetch(`${Const.API_GET_DECK}${deckId}`);
 
     const json = await res.json();
     if ('error' in json) {
@@ -53,17 +50,15 @@ export default function useHeroList(deckId = 20) {
         console.log(heroListObjects);
       }
     }
-
+    //some delay to show the user deck is loading
     setTimeout(() => {
       console.log(json);
       setIsLoading(false);
-    }, 2000);
+    }, 1200);
   }
 
   async function fetchHeroe(heroe: string): Promise<Hero> {
-    const res = await fetch(
-      `https://ringsdb.com/api/public/card/${heroe}`,
-    );
+    const res = await fetch(`${Const.API_GET_CARD}${heroe}`);
     const json = await res.json();
     return json;
   }

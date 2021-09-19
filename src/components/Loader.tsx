@@ -1,12 +1,22 @@
+import React from 'react';
+import { css } from '@emotion/react';
+
 import PulseLoader from 'react-spinners/PulseLoader';
-import Center from './layout/Center';
 
 const Loader = () => {
   return (
-    <Center>
+    <div
+      css={css`
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 50vh;
+      `}
+    >
       <p> loading</p>
       <PulseLoader color="#000000" />
-    </Center>
+    </div>
   );
 };
 
