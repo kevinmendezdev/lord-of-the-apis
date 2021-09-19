@@ -11,7 +11,8 @@ const ErrorMessage = ({ error }: { error: string }) => {
           display: flex;
           flex-direction: column;
           align-items: center;
-          height: 50vh;
+          justify-content: center;
+          height: 68vh;
           & > p {
             font-size: 20px;
             text-align: center;
@@ -21,7 +22,15 @@ const ErrorMessage = ({ error }: { error: string }) => {
         `}
       >
         <img
-          style={{ height: '220px' }}
+          css={css`
+            width: 100%;
+            height: auto;
+            max-width: 320px;
+            @media (max-width: 400px) {
+              & {
+                max-width: 160px;
+              }
+          `}
           src={brokenSword}
           alt="broken sword"
         />

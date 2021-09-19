@@ -40,16 +40,30 @@ const ModalContainer = styled.div`
 `;
 
 const HeroInfoContainer = styled.div`
-  margin: -2px 52px;
+  display: grid;
+  grid-template-columns: 0.5fr 2fr;
+  gap: 40px;
+`;
+
+const HeroName = styled.h3`
+  padding: 34px 0px 0px 28px;
+  font-size: 2em;
   @media (max-width: 600px) {
-    & {
-      margin: 0;
+    &  {
+      font-size:1.4em;
     }
 `;
-const HeroInfo = styled.div`
+
+const HeroContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 20px;
+  padding: 0px 20px;
+  gap: 40px;
+  @media (max-width: 600px) {
+    & {
+      grid-template-columns: 1fr;
+    }
+  }
 `;
 
 const HeroStats = ({ hero }: HeroProps) => {
@@ -95,25 +109,6 @@ const HeroDescription = ({ hero }: HeroProps) => {
   );
 };
 
-const HeroName = styled.h3`
-  padding: 34px 0px 0px 28px;
-  font-size: 2em;
-  @media (max-width: 600px) {
-    &  {
-      font-size:1.4em;
-    }
-`;
-
-const HeroContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  padding: 0px 20px;
-  @media (max-width: 600px) {
-    & {
-      grid-template-columns: 1fr;
-    }
-  }
-`;
 const HeroCard = styled.div``;
 const HeroModal = ({ hero, toggle }: HeroModalProps) => {
   return (
@@ -128,10 +123,8 @@ const HeroModal = ({ hero, toggle }: HeroModalProps) => {
               <IllustratorName>{` Illustrator: ${hero.illustrator}`}</IllustratorName>
             </HeroCard>
             <HeroInfoContainer>
-              <HeroInfo>
-                <HeroStats hero={hero} />
-                <HeroDescription hero={hero} />
-              </HeroInfo>
+              <HeroStats hero={hero} />
+              <HeroDescription hero={hero} />
             </HeroInfoContainer>
           </HeroContainer>
         </ModalContainer>

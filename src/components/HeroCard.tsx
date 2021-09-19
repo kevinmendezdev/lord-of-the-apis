@@ -12,7 +12,6 @@ function HeroeCard({ hero }: HeroProps) {
   const [showModal, changeModal] = useState(false);
   function toggleModal(): void {
     changeModal(!showModal);
-    console.log('toggle modal');
   }
 
   return (
